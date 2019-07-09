@@ -4,7 +4,7 @@ Bee hive temperature denoising using RBF with TensorFlow
 
 This python app receives as input a file containing bee hive temperatures contaminated with non-gaussian noise and produces an output file with the denoised data.
 
-The denoising is based on an RBF (Radial Basis Function) neural network trained with Correntropy criterion.
+The denoising is based on an RBF (Radial Basis Function) neural network trained with Correntropy criterion. The software uses TensorFlow to generate the neural net model and training steps.
 
 The input data is normalized so the output do not contain the actual temperature, the user have to renormalized the output after denoising. The normalization depends on the calibration of the sensor and the user should be aware of that fact.
 
