@@ -9,6 +9,7 @@ Created on Thu Jul 26 22:02:41 2018
 import tensorflow as tf
 import numpy as np
 from matplotlib import pyplot as plt
+import sys
 
 
 
@@ -40,7 +41,7 @@ def model(x, P):
     return y
 
 
-def organizeData(trainPercentage):
+def organizeData(trainPercentage, filename, col):
     """
     Organize the data for training, testing and presentation 
     
@@ -52,9 +53,9 @@ def organizeData(trainPercentage):
     
     """
     
-    data = np.loadtxt('bees2.txt')
+    data = np.loadtxt(filename)
     
-    y = data[:,6] - np.mean(data[:,6])
+    y = data[:,6] - np.mean(data[:,col])
     
     
     # number of samples
@@ -76,8 +77,14 @@ def organizeData(trainPercentage):
 
 # main
 
+if len(sys.argv)!=4:
+    print("Usage: rby.py inputfile colum_number outputfile")
+    exit()
+
+
+
 # assemble data
-(t, y), (t_train, y_train), (t_test, y_test), (NTrain, NTest) = organizeData(1.0)
+(t, y), (t_train, y_train), (t_test, y_test), (NTrain, NTest) = organizeData(1.0, sys.argv[1], int(sys.argv[2]))
 
 
 
@@ -180,5 +187,10 @@ plt.show()
 
 print('\n\n')
 
+
+fid = open(sys.argv[3], 'wt')
+
 for yh in yHat:
-    print('%.4f'%yh)
+    fid.write('%.4f '%yh)
+
+fid.close()
