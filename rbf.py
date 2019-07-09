@@ -55,8 +55,11 @@ def organizeData(trainPercentage, filename, col):
     
     data = np.loadtxt(filename)
     
-    y = data[:,6] - np.mean(data[:,col])
+    y = data[:,col] - np.mean(data[:,col])
     
+    yRms = np.sqrt(np.mean(np.square(y)))
+
+    y = y/yRms;
     
     # number of samples
     NTrain = int(data.shape[0]*trainPercentage)
@@ -110,9 +113,9 @@ nW = 4*19
 
 
 # initial model parameters
-W = 5*np.cos(np.linspace(1,nW,nW)*np.pi/2)
+W = 0*np.cos(np.linspace(1,nW,nW)*np.pi/2)
 Cx = np.linspace(0,np.max(t),nW)
-sigmaRbf2 = 10000
+sigmaRbf2 = 100
 
 
 # placeholders for training
