@@ -12,7 +12,7 @@ The input data is normalized so the output do not contain the actual temperature
 
 ./rbf.py inputfile column outputfile
 
-The input file should be a text file with n columns of measurements. Each line is a measurement in time and each colum is a sensor. The column parameter is the number of the sensor (column of the file). utput file will be a text file with the denoised data.
+The input file should be a text file with n columns of measurements. Each line is a measurement in time and each colum is a sensor. The column parameter is the number of the sensor (column of the file). The output will be a text file with the denoised data.
 
 
 Example:
